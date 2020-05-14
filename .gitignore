@@ -1,0 +1,9 @@
+#Not to include any class file.
+*.class
+#Not to include any jar file.
+*.jar
+#Not to include any log file.
+*.log
+/build/
+#Property loading path must not be checked in
+src/com/gen/util/LoadProperties.java
