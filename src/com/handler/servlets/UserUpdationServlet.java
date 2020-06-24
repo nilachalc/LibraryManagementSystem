@@ -77,7 +77,7 @@ public class UserUpdationServlet extends HttpServlet {
 			
 			try { 
 				if (session != null) { 
-					String[] userValues = userCSV.split(ApplicationConstants.COMMA);
+					String[] userValues = userCSV.split(ApplicationConstants.SEMICOLON);
 					
 					userBean.setUserId(((UserBean)session.getAttribute("userValue")).getUserId());
 					userBean.setFirstName(userValues[ApplicationConstants.VALUE_ZERO]);

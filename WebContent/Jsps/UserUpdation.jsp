@@ -37,7 +37,7 @@
 				  	userValueAsString.push(document.userUpdationContainer1.userAge.value);
 				  	userValueAsString.push(document.userUpdationContainer1.userGender.value);
 				  	
-				  	document.userUpdationContainer2.userUpdatedValue.value = userValueAsString.join(",");
+				  	document.userUpdationContainer2.userUpdatedValue.value = userValueAsString.join(";");
 				  	
 				  	document.userUpdationContainer2.updateOperation.value = 'updateUserOperation' ;
 				} else {
