@@ -17,7 +17,7 @@
 			window.onload = pageLoad;
 			
 			function logInAgain(){
-				window.open("http://localhost:8081/LibraryManagementSystem_Diptendu_Kundu/LogIn.jsp");
+				window.open("http://localhost:8081/LibraryManagementSystem/LogIn.jsp");
 			}
 		</script>
 		<title>Exception Occurred.</title>
