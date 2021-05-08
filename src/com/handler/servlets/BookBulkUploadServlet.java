@@ -111,7 +111,7 @@ public class BookBulkUploadServlet extends HttpServlet {
 									+ " Field Name: " + diskFileItem.getFieldName()
 									+ " Content Type:" + diskFileItem.getContentType()
 									+ " Is The File In Memory: " + diskFileItem.isInMemory()
-									+ " File Siza In Bytes: " + diskFileItem.getSize());
+									+ " File Size In Bytes: " + diskFileItem.getSize());
 							// Write the file
 							if( fileName.lastIndexOf("\\") >= 0 ) {
 								file = new File(filePath + fileName.substring( fileName.lastIndexOf("\\"))) ;
