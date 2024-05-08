@@ -17,3 +17,55 @@ function validateBookBulkUpload() {
 function bookBulkUploadFileValidation() {
 	return (document.bookBulkUploadContainer1.bookBulkUploadFileInput.value == '');
 }
+
+//Methods For Validation Of An User Addition. 
+function validateAddition() {
+	if (bookNameValidationForAddition()) {
+		 document.getElementById("bookNameCheck").style = 'visibility: visible;';
+		 event.preventDefault();
+	 } else {
+		 document.getElementById("bookNameCheck").style = 'visibility: hidden;';
+	}
+	
+	if (authorNameValidationForAddition()) {
+		 document.getElementById("authorNameCheck").style = 'visibility: visible;';
+		 event.preventDefault();
+	 } else {
+		 document.getElementById("authorNameCheck").style = 'visibility: hidden;';
+	}
+	
+	if (availabilityDateValidationForAddition()) {
+		 document.getElementById("availabilityDateCheck").style = 'visibility: visible;';
+		 event.preventDefault();
+	 } else {
+		 document.getElementById("availabilityDateCheck").style = 'visibility: hidden;';
+	}
+	
+	if (genreValidationForAddition()) {
+		 document.getElementById("genreCheck").style = 'visibility: visible;';
+		 event.preventDefault();
+	 } else {
+		 document.getElementById("genreCheck").style = 'visibility: hidden;';
+	}
+}
+
+function bookNameValidationForAddition() {
+	return (!(isNaN(document.bookRegistrationContainer.bookName.value))
+		|| document.bookRegistrationContainer.bookName.value == '');
+}
+
+function authorNameValidationForAddition() {
+	return (!(isNaN(document.bookRegistrationContainer.authorName.value))
+		|| document.bookRegistrationContainer.authorName.value == '');
+}
+
+function availabilityDateValidationForAddition() {
+	return (!(isNaN(document.bookRegistrationContainer.availabilityDate.value))
+		|| document.bookRegistrationContainer.availabilityDate.value == '');
+}
+
+function genreValidationForAddition() {
+	return (isNaN(document.bookRegistrationContainer.genre.value)
+		|| document.bookRegistrationContainer.genre.value == ''
+		|| document.bookRegistrationContainer.genre.value.length != 10);
+}

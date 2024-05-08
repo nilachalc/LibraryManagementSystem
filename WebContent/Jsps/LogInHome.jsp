@@ -131,7 +131,7 @@
 							</thead>
 							<tr class="linktr" >
 								<td>
-									<a href="javascript:submitForm('viewUser')" class="link" >Add Book</a>
+									<a href="javascript:submitForm('createBook')" class="link" >Add Book</a>
 								</td>
 							</tr>
 							<tr class="linktr" >

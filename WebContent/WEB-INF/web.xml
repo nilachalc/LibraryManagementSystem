@@ -67,6 +67,10 @@
     <servlet-class>com.handler.servlets.UserUpdationServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>BookCreation</servlet-name>
+    <servlet-class>com.handler.servlets.BookCreationServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>BookBulkUpload</servlet-name>
     <servlet-class>com.handler.servlets.BookBulkUploadServlet</servlet-class>
   </servlet>
@@ -113,6 +117,10 @@
   <servlet-mapping>
     <servlet-name>UserUpdation</servlet-name>
     <url-pattern>/UserUpdationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BookCreation</servlet-name>
+    <url-pattern>/BookCreationServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>BookBulkUpload</servlet-name>

@@ -59,6 +59,8 @@ public class RequestHandlerServlet extends HttpServlet {
 							UserDropDownServletUtility.loadUserDropDown(request, response);
 							session.setAttribute("userDropDownValuesForUpdation", request.getAttribute("userDropDownBeans"));
 							response.sendRedirect("Jsps/UserUpdation.jsp");
+						} else if (((String)pageAttribute).equals(properties.getPropertyForValue("createABook"))) {
+							response.sendRedirect("Jsps/BookCreation.jsp");
 						} else if (((String)pageAttribute).equals(properties.getPropertyForValue("bookBulkUploadFromAFile"))) {
 							response.sendRedirect("Jsps/BookBulkUpload.jsp");
 						}
