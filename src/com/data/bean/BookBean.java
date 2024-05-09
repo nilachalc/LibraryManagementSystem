@@ -49,11 +49,11 @@ public class BookBean {
 	public void setAvailabilityDate(Date availaibilityDate) {
 		this.availabilityDate = availaibilityDate;
 	}
-	public Character getReadytoreIssue() {
+	public Character getReadytoIssue() {
 		return readytoIssue;
 	}
-	public void setReadytoreIssue(Character readytoreIssue) {
-		this.readytoIssue = readytoreIssue;
+	public void setReadytoIssue(Character readytoIssue) {
+		this.readytoIssue = readytoIssue;
 	}
 	public Integer getCurrentUserIssued() {
 		return currentUserIssued;

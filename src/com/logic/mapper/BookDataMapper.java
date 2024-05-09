@@ -1,7 +1,6 @@
 package com.logic.mapper;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.data.bean.BookBean;
@@ -32,9 +31,9 @@ public class BookDataMapper {
 		bookDao.setAvailabilityDate(new Timestamp(bookBean.getAvailabilityDate().getTime()));
 		today = new Date();
 		if (today.after(bookBean.getAvailabilityDate())) {
-			bookDao.setReadytoreIssue(ApplicationConstants.VALUE_YES);
+			bookDao.setReadytoIssue(ApplicationConstants.VALUE_YES);
 		} else {
-			bookDao.setReadytoreIssue(ApplicationConstants.VALUE_NO);
+			bookDao.setReadytoIssue(ApplicationConstants.VALUE_NO);
 		}
 		
 		if (bookBean.getCurrentUserIssued() != null) {

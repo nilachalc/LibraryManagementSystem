@@ -15,6 +15,7 @@ import com.gen.util.ApplicationConstants;
 import com.gen.util.DataBaseConnection;
 import com.gen.util.LoadProperties;
 import com.repo.adapter.BookAdapter;
+import com.repo.adapter.GenreAdapter;
 import com.repo.dao.BookDao;
 
 public class BookAdapterImpl implements BookAdapter {
@@ -23,6 +24,8 @@ public class BookAdapterImpl implements BookAdapter {
 	
 	private PreparedStatement preparedStatement;
 	private DataBaseConnection dataBaseConnection;
+	
+	private GenreAdapter genreAdapter;
 	
 	public BookAdapterImpl() {
 		logger = AppLogger.getLogger();
@@ -38,6 +41,7 @@ public class BookAdapterImpl implements BookAdapter {
 		try {
 			dataBaseConnection = new DataBaseConnection();
 			Connection con = dataBaseConnection.newConnection();
+			genreAdapter = new GenreAdapterImpl();
 			
 			newBookId = null;
 			Integer insertionCompletionStatus = null;
@@ -56,10 +60,10 @@ public class BookAdapterImpl implements BookAdapter {
 				preparedStatement.setString(ApplicationConstants.VALUE_TWO, bookDao.getBookName());
 				preparedStatement.setString(ApplicationConstants.VALUE_THREE, bookDao.getAuthorName());
 				preparedStatement.setTimestamp(ApplicationConstants.VALUE_FOUR, bookDao.getAvailabilityDate());
-				preparedStatement.setString(ApplicationConstants.VALUE_FIVE, bookDao.getReadytoreIssue().toString());
+				preparedStatement.setString(ApplicationConstants.VALUE_FIVE, bookDao.getReadytoIssue().toString());
 				preparedStatement.setInt(ApplicationConstants.VALUE_SIX, bookDao.getGenreId());
 			}
-			
+			genreAdapter.udateGenreHit(bookDao.getGenreId(), (genreAdapter.getGenreHitById(bookDao.getGenreId()) + ApplicationConstants.VALUE_ONE));
 			insertionCompletionStatus = preparedStatement.executeUpdate();
 			if (insertionCompletionStatus.equals(ApplicationConstants.VALUE_ZERO)) {
 				logger.info("Book Creation Failed." + properties.getPropertyForValue("adapterExit") + BookAdapterImpl.class);
@@ -100,7 +104,7 @@ public class BookAdapterImpl implements BookAdapter {
 				bookDao.setIssueDate(rs.getTimestamp(ApplicationConstants.VALUE_FIVE));
 				bookDao.setSubmissionDate(rs.getTimestamp(ApplicationConstants.VALUE_SIX));
 				bookDao.setAvailabilityDate(rs.getTimestamp(ApplicationConstants.VALUE_SEVEN));
-				bookDao.setReadytoreIssue(rs.getString(ApplicationConstants.VALUE_EIGHT).charAt(ApplicationConstants.VALUE_ZERO));
+				bookDao.setReadytoIssue(rs.getString(ApplicationConstants.VALUE_EIGHT).charAt(ApplicationConstants.VALUE_ZERO));
 				bookDao.setGenreId(rs.getInt(ApplicationConstants.VALUE_NINE));
 				
 				bookDaos.add(bookDao);
