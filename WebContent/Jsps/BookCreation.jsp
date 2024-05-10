@@ -65,7 +65,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td id="autorNameCheck" style="visibility: hidden;">
+					<td id="authorNameCheck" style="visibility: hidden;">
 						<label style="font-weight: bold; color: red;" >** Please enter a valid author name for the book.</label>
 					</td>
 				</tr>

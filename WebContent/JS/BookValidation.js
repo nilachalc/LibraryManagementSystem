@@ -18,7 +18,7 @@ function bookBulkUploadFileValidation() {
 	return (document.bookBulkUploadContainer1.bookBulkUploadFileInput.value == '');
 }
 
-//Methods For Validation Of An User Addition. 
+//Methods For Validation Of An Book Addition. 
 function validateAddition() {
 	if (bookNameValidationForAddition()) {
 		 document.getElementById("bookNameCheck").style = 'visibility: visible;';
@@ -43,7 +43,6 @@ function validateAddition() {
 	
 	if (genreValidationForAddition()) {
 		 document.getElementById("genreCheck").style = 'visibility: visible;';
-		 alert("Bang!!!")
 		 event.preventDefault();
 	 } else {
 		 document.getElementById("genreCheck").style = 'visibility: hidden;';
