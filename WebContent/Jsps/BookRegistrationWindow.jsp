@@ -80,9 +80,11 @@
 			    	<label class="label">Genre</label>
 			    </td>
 			    <td>
-			    	<select name="genre">
-			    		<option value="-1" selected="selected" >--Select--</option>
-			       		<option value="0">Genre</option>
+		    		<select name="genreDropDownValues">
+				  		<option value="-1" selected="selected">--Select Genre--</option>
+					    <c:forEach items="${genreDropDownValues}" var="genreDropDownValue">
+					        <option value="${genreDropDownValue.genreId}">${genreDropDownValue.genreName}</option>
+					    </c:forEach>
 					</select>
 			    </td>
 			  </tr>

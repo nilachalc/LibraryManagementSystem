@@ -43,6 +43,7 @@ function validateAddition() {
 	
 	if (genreValidationForAddition()) {
 		 document.getElementById("genreCheck").style = 'visibility: visible;';
+		 alert("Bang!!!")
 		 event.preventDefault();
 	 } else {
 		 document.getElementById("genreCheck").style = 'visibility: hidden;';
@@ -65,7 +66,5 @@ function availabilityDateValidationForAddition() {
 }
 
 function genreValidationForAddition() {
-	return (isNaN(document.bookRegistrationContainer.genre.value)
-		|| document.bookRegistrationContainer.genre.value == ''
-		|| document.bookRegistrationContainer.genre.value.length != 10);
+	return (document.bookRegistrationContainer.genreDropDownValues.value == '-1');
 }

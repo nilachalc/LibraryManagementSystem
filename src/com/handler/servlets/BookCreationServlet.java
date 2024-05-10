@@ -2,6 +2,8 @@ package com.handler.servlets;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +28,7 @@ public class BookCreationServlet extends HttpServlet {
 	
 	private BookService bookService;
 	private BookBean bookBean;
+	List<BookBean> bookBeans;
 	
 	private HttpSession session;
 
@@ -43,6 +46,7 @@ public class BookCreationServlet extends HttpServlet {
     	session = request.getSession(false);
     	bookBean = new BookBean();
     	bookService = new BookServiceImpl();
+    	bookBeans = new ArrayList<BookBean>();
 
     	try {
     		if (request.getParameter("cancelOperation").equals(properties.getPropertyForValue("goBack"))) {
@@ -55,16 +59,13 @@ public class BookCreationServlet extends HttpServlet {
     			bookBean.setBookName(request.getParameter("bookName"));
     			bookBean.setAuthorName(request.getParameter("authorName"));
     			bookBean.setAvailabilityDate(DateConverter.stringToDate(request.getParameter("availabilityDate")));
-    			bookBean.setGenreId(Integer.parseInt(request.getParameter("genre")));
+    			bookBean.setGenreId(Integer.parseInt(request.getParameter("genreDropDownValues")));
+    			bookBeans.add(bookBean);
     			if (session != null) {
-    				bookBean = bookService.saveBookInfo(bookBean);
-    			}
-
-
-    			if (bookBean.getBookId() != null) {
-    				request.getServletContext().setAttribute("bookCreated", new Boolean(true));
+    				session.setAttribute("NoOfBookUploaded", bookService.saveBookInfo(bookBeans).size());
     			}
     			request.setAttribute("page", BookCreationServlet.class);
+    			request.getServletContext().setAttribute("bookCreated", new Boolean(true));
     		}
     	} catch (ServiceException | ParseException serviceException) {
     		logger.error((serviceException.toString() + "\n" + serviceException.getMessage()));

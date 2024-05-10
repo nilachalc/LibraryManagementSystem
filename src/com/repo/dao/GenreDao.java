@@ -3,7 +3,7 @@ package com.repo.dao;
 public class GenreDao {
 	private Integer genreId;
 	private String genreName;
-	private String genreHit;
+	private Integer genreHit;
 	
 	public Integer getGenreId() {
 		return genreId;
@@ -21,11 +21,11 @@ public class GenreDao {
 		this.genreName = genreName;
 	}
 	
-	public String getGenreHit() {
+	public Integer getGenreHit() {
 		return genreHit;
 	}
 	
-	public void setGenreHit(String genreHit) {
+	public void setGenreHit(Integer genreHit) {
 		this.genreHit = genreHit;
 	}
 }

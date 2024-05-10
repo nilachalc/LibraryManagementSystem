@@ -30,7 +30,7 @@ public class GenreAdapterImpl implements GenreAdapter {
 	}
 
 	@Override
-	public void udateGenreHit(Integer genreId, String genreHit) throws DBException {
+	public void udateGenreHit(Integer genreId, Integer genreHit) throws DBException {
 		logger.info(properties.getPropertyForValue("adapterEntry") + GenreAdapterImpl.class);
 		Integer updationCompletionStatus;
 		try {
@@ -41,7 +41,7 @@ public class GenreAdapterImpl implements GenreAdapter {
 			String sqlQuery = properties.getPropertyForValue("genreHitUpdate");
 			preparedStatement = con.prepareStatement(sqlQuery);
 			
-			preparedStatement.setString(ApplicationConstants.VALUE_ONE, genreHit);
+			preparedStatement.setInt(ApplicationConstants.VALUE_ONE, genreHit);
 			preparedStatement.setInt(ApplicationConstants.VALUE_TWO, genreId);
 			
 			updationCompletionStatus = preparedStatement.executeUpdate();			
@@ -59,9 +59,9 @@ public class GenreAdapterImpl implements GenreAdapter {
 	}
 
 	@Override
-	public String getGenreHitById(Integer genreId) throws DBException {
+	public Integer getGenreHitById(Integer genreId) throws DBException {
 		logger.info(properties.getPropertyForValue("adapterEntry") + GenreAdapterImpl.class);
-		String genreHit = null;
+		Integer genreHit = null;
 		try {
 			dataBaseConnection = new DataBaseConnection();
 			Connection con = dataBaseConnection.newConnection();  
@@ -72,7 +72,7 @@ public class GenreAdapterImpl implements GenreAdapter {
 			preparedStatement.setInt(ApplicationConstants.VALUE_ONE, genreId);
 			ResultSet rs = preparedStatement.executeQuery();
 			if (rs != null && rs.next()) {
-				genreHit= rs.getString(ApplicationConstants.VALUE_ONE);
+				genreHit= rs.getInt(ApplicationConstants.VALUE_ONE);
 			}
 		} catch(SQLException sqlException) {
 			logger.error((sqlException.getMessage()));

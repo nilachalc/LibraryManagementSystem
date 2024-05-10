@@ -16,6 +16,7 @@ import com.gen.jsp.utility.GenderDropDownUtility;
 import com.gen.util.AppLogger;
 import com.gen.util.ApplicationConstants;
 import com.gen.util.LoadProperties;
+import com.handler.servlets.logic.GenreDropDownServletUtility;
 import com.handler.servlets.logic.UserDropDownServletUtility;
 import com.handler.servlets.logic.UserViewServletUtility;
 
@@ -60,6 +61,8 @@ public class RequestHandlerServlet extends HttpServlet {
 							session.setAttribute("userDropDownValuesForUpdation", request.getAttribute("userDropDownBeans"));
 							response.sendRedirect("Jsps/UserUpdation.jsp");
 						} else if (((String)pageAttribute).equals(properties.getPropertyForValue("createABook"))) {
+							GenreDropDownServletUtility.loadGenreDropDown(request, response);
+							session.setAttribute("genreDropDownValues", request.getAttribute("genreDropDownBeans"));
 							response.sendRedirect("Jsps/BookCreation.jsp");
 						} else if (((String)pageAttribute).equals(properties.getPropertyForValue("bookBulkUploadFromAFile"))) {
 							response.sendRedirect("Jsps/BookBulkUpload.jsp");
@@ -91,6 +94,8 @@ public class RequestHandlerServlet extends HttpServlet {
 							response.sendRedirect("Jsps/UserUpdation.jsp");
 						} else if (((Class<UserUpdationServlet>)pageAttribute).equals(UserUpdationServlet.class)
 								&& (((Boolean)request.getServletContext().getAttribute("userUpdated")).equals(ApplicationConstants.VALUE_TRUE))) {
+							response.sendRedirect("Jsps/LogInHome.jsp");
+						} else if (((Class<UserCreationServlet>)pageAttribute).equals(BookCreationServlet.class)) {
 							response.sendRedirect("Jsps/LogInHome.jsp");
 						} else if (((Class<BookBulkUploadServlet>)pageAttribute).equals(BookBulkUploadServlet.class)) {
 							response.sendRedirect("Jsps/LogInHome.jsp");

@@ -13,6 +13,7 @@
 				var isUserCreatedSuccessfully = document.logInHomeContainer.userCreationCheck.value;
 				var isUserDeletedSuccessfully = document.logInHomeContainer.userDeletionCheck.value;
 				var isUserUpdatedSuccessfully = document.logInHomeContainer.userUpdationCheck.value;
+				var isBookCreatedSuccessfully = document.logInHomeContainer.bookCreationCheck.value;
 				var isBookBulkUploadedSuccessfully = document.logInHomeContainer.bookBulkUploadCheck.value;
 				
 			    if (isUserCreatedSuccessfully == "true") {
@@ -25,6 +26,10 @@
 			    
 			    if (isUserUpdatedSuccessfully == "true") {
 			    	document.getElementById("successMessageUpdation").style = 'visibility: visible; color: ##003300; font-style: italic; font-weight: bold; text-align: center;';
+			    }
+			    
+			    if (isBookCreatedSuccessfully == "true") {
+			    	document.getElementById("successMessageBookCreation").style = 'visibility: visible; color: ##003300; font-style: italic; font-weight: bold; text-align: center;';
 			    }
 			    
 			    if (isBookBulkUploadedSuccessfully == "true") {
@@ -63,6 +68,7 @@
 					<h4><label id="successMessageCreation" style="visibility: hidden;" >The User has been added successfully. Happy Managing!!!</label></h4>
 					<h4><label id="successMessageDeletion" style="visibility: hidden;" >The User has been deleted successfully. Happy Managing!!!</label></h4>
 					<h4><label id="successMessageUpdation" style="visibility: hidden;" >The User has been updated successfully. Happy Managing!!!</label></h4>
+					<h4><label id="successMessageBookCreation" style="visibility: hidden;" >The Book has been added successfully. Happy Managing!!!</label></h4>
 				</td>
 			</tr>
 		</table>
@@ -191,12 +197,16 @@
 		  		Boolean isUserUpdated = (Boolean)request.getServletContext().getAttribute("userUpdated");
 		  		request.getServletContext().setAttribute("userUpdated", new Boolean(false));
 		  		
+		  		Boolean isBookCreated = (Boolean)request.getServletContext().getAttribute("bookCreated");
+		  		request.getServletContext().setAttribute("bookCreated", new Boolean(false));
+		  		
 		  		Boolean isBookBulkUploaded = (Boolean)request.getServletContext().getAttribute("bookBulkUploaded");
 		  		request.getServletContext().setAttribute("bookBulkUploaded", new Boolean(false));
 			%>
 			<input type="hidden" name="userCreationCheck" value="<%=isUserCreated%>">
 			<input type="hidden" name="userDeletionCheck" value="<%=isUserDeleted%>">
 			<input type="hidden" name="userUpdationCheck" value="<%=isUserUpdated%>">
+			<input type="hidden" name="bookCreationCheck" value="<%=isBookCreated%>">
 			<input type="hidden" name="bookBulkUploadCheck" value="<%=isBookBulkUploaded%>">
 		</form>
 	</body>

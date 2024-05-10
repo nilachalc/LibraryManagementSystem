@@ -30,25 +30,6 @@ public class BookServiceImpl implements  BookService {
 	}
 
 	@Override
-	public BookBean saveBookInfo(BookBean bookBean) throws ServiceException {
-		logger.info(properties.getPropertyForValue("serviceEntry") + BookServiceImpl.class);
-		bookDataMapper = new BookDataMapper();
-		bookAdapter = new BookAdapterImpl();
-		BookDao bookDao;
-		
-		try {
-			bookDao = bookDataMapper.mapBeanDataToDao(bookBean, ApplicationConstants.VALUE_FALSE);
-			bookBean.setBookId(bookAdapter.save(bookDao));
-			
-		} catch (DBException dbException) {
-			logger.error((dbException.toString() + "\n" + dbException.getMessage()));
-			throw new ServiceException(dbException);
-		}
-		logger.info(properties.getPropertyForValue("serviceExit") + BookServiceImpl.class);
-		return bookBean;
-	}
-	
-	@Override
 	public List<Integer> saveBookInfo(List<BookBean> bookBeans) throws ServiceException {
 		logger.info(properties.getPropertyForValue("serviceEntry") + BookServiceImpl.class);
 		bookDataMapper = new BookDataMapper();
